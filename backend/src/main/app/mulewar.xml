@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <flow name="IncreaseRedClicks" doc:name="IncreaseRedClicks">
+        <http:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="60999" doc:name="HTTPRed" path="mulewar/tugRed"/>
+        <message-filter doc:name="Filter favicon">
+            <not-filter>
+                <wildcard-filter pattern="/favicon.ico" caseSensitive="true"/>
+            </not-filter>
+        </message-filter>
+        <jersey:resources doc:name="REST">
+            <component class="com.mulesoft.ht.RedRestApi"/>
+        </jersey:resources>
+    </flow>
+    <flow name="IncreaseBlueClicks" doc:name="IncreaseBlueClicks">
+        <http:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="60999" doc:name="HTTPBlue" path="mulewar/tugBlue"/>
+        <message-filter doc:name="Filter favicon">
+            <not-filter>
+                <wildcard-filter pattern="/favicon.ico" caseSensitive="true"/>
+            </not-filter>
+        </message-filter>
+        <jersey:resources doc:name="REST">
+            <component class="com.mulesoft.ht.BlueRestApi"/>
+        </jersey:resources>
+    </flow>
+    <flow name="Management" doc:name="Management">
+        <http:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="60999" doc:name="HTTP" path="mulewar"/>
+        <message-filter doc:name="Filter favicon">
+            <not-filter>
+                <wildcard-filter pattern="/favicon.ico" caseSensitive="true"/>
+            </not-filter>
+        </message-filter>
+        <jersey:resources doc:name="REST">
+            <component class="com.mulesoft.ht.RestApi"/>
+        </jersey:resources>
+    </flow>
+</mule>

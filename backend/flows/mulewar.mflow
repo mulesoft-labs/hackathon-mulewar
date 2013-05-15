@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="mulewar">
+    <flow SubFlow="false" name="IncreaseRedClicks" entity-id="f404bd6a-c6fb-4792-86b9-8679febafadc">
+        <properties>
+            <property name="updated"/>
+            <property name="processingStrategy2" value=""/>
+            <property name="bussinessEventsLabel" value=""/>
+            <property name="tracking:enable-default-events" value="false"/>
+            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="auxiliary;index" value="1"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1121248126"/>
+        </properties>
+        <description></description>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTPRed" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="port" value="60999"/>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="contentType" value=""/>
+                    <property name="password" value=""/>
+                    <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="updated"/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="path" value="mulewar/tugRed"/>
+                    <property name="encoding" value=""/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="2"/>
+                    <property name="mimeType" value=""/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="auxiliary;erased;contentType" value="true"/>
+                    <property name="host" value="0.0.0.0"/>
+                    <property name="businessEventsLabel" value=""/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="keep-alive" value="false"/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
+                    <property name="address" value=""/>
+                    <property name="user" value=""/>
+                    <property name="connector-ref" value=""/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern name="Filter favicon" type="http://www.mulesoft.org/schema/mule/core/message-filter" entity-id="Message#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="onUnaccepted"/>
+                    <property name="throwOnUnaccepted"/>
+                    <property name="auxiliary;index" value="3"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/not-filter;0">
+                        <property name="auxiliary;wrapIn" value="4"/>
+                        <property name="auxiliary;index" value="4"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/core/wildcard-filter;1">
+                            <property name="pattern" value="/favicon.ico"/>
+                            <property name="caseSensitive" value="true"/>
+                            <property name="auxiliary;wrapIn" value="5"/>
+                            <property name="auxiliary;index" value="5"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern name="REST" type="http://www.mulesoft.org/schema/mule/jersey/resources" entity-id="REST#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="auxiliary;index" value="6"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;0">
+                        <property name="class" value="com.mulesoft.ht.RedRestApi"/>
+                        <property name="auxiliary;wrapIn" value="7"/>
+                        <property name="auxiliary;index" value="7"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="IncreaseBlueClicks" entity-id="f97772d9-464a-4d95-8785-44ba59913a7a">
+        <properties>
+            <property name="updated"/>
+            <property name="processingStrategy2" value=""/>
+            <property name="bussinessEventsLabel" value=""/>
+            <property name="tracking:enable-default-events" value="false"/>
+            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="auxiliary;index" value="8"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1594182334"/>
+        </properties>
+        <description></description>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTPBlue" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="port" value="60999"/>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="contentType" value=""/>
+                    <property name="password" value=""/>
+                    <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="updated"/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="path" value="mulewar/tugBlue"/>
+                    <property name="encoding" value=""/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="9"/>
+                    <property name="mimeType" value=""/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="auxiliary;erased;contentType" value="true"/>
+                    <property name="host" value="0.0.0.0"/>
+                    <property name="businessEventsLabel" value=""/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="keep-alive" value="false"/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
+                    <property name="address" value=""/>
+                    <property name="user" value=""/>
+                    <property name="connector-ref" value=""/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern name="Filter favicon" type="http://www.mulesoft.org/schema/mule/core/message-filter" entity-id="Message#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="onUnaccepted"/>
+                    <property name="throwOnUnaccepted"/>
+                    <property name="auxiliary;index" value="10"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/not-filter;0">
+                        <property name="auxiliary;wrapIn" value="11"/>
+                        <property name="auxiliary;index" value="11"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/core/wildcard-filter;1">
+                            <property name="pattern" value="/favicon.ico"/>
+                            <property name="caseSensitive" value="true"/>
+                            <property name="auxiliary;wrapIn" value="12"/>
+                            <property name="auxiliary;index" value="12"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern name="REST" type="http://www.mulesoft.org/schema/mule/jersey/resources" entity-id="REST#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="auxiliary;index" value="13"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;0">
+                        <property name="class" value="com.mulesoft.ht.BlueRestApi"/>
+                        <property name="auxiliary;wrapIn" value="14"/>
+                        <property name="auxiliary;index" value="14"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="Management" entity-id="b490aa8e-0b4b-4643-9a45-64f2f08ec52f">
+        <properties>
+            <property name="updated"/>
+            <property name="processingStrategy2" value=""/>
+            <property name="bussinessEventsLabel" value=""/>
+            <property name="tracking:enable-default-events" value="false"/>
+            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="auxiliary;index" value="15"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;225161011"/>
+        </properties>
+        <description></description>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="port" value="60999"/>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="contentType" value=""/>
+                    <property name="password" value=""/>
+                    <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="updated"/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="path" value="mulewar"/>
+                    <property name="encoding" value=""/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="16"/>
+                    <property name="mimeType" value=""/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="auxiliary;erased;contentType" value="true"/>
+                    <property name="host" value="0.0.0.0"/>
+                    <property name="businessEventsLabel" value=""/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="keep-alive" value="false"/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
+                    <property name="address" value=""/>
+                    <property name="user" value=""/>
+                    <property name="connector-ref" value=""/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern name="Filter favicon" type="http://www.mulesoft.org/schema/mule/core/message-filter" entity-id="Message#3">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="onUnaccepted"/>
+                    <property name="throwOnUnaccepted"/>
+                    <property name="auxiliary;index" value="17"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/not-filter;0">
+                        <property name="auxiliary;wrapIn" value="18"/>
+                        <property name="auxiliary;index" value="18"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/core/wildcard-filter;1">
+                            <property name="pattern" value="/favicon.ico"/>
+                            <property name="caseSensitive" value="true"/>
+                            <property name="auxiliary;wrapIn" value="19"/>
+                            <property name="auxiliary;index" value="19"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern name="REST" type="http://www.mulesoft.org/schema/mule/jersey/resources" entity-id="REST#3">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="auxiliary;index" value="20"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;0">
+                        <property name="class" value="com.mulesoft.ht.RestApi"/>
+                        <property name="auxiliary;wrapIn" value="21"/>
+                        <property name="auxiliary;index" value="21"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+</mule-configuration>
