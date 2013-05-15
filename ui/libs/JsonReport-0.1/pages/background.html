@@ -1,0 +1,53 @@
+﻿<script type="text/javascript">
+	var lastPayload = null;
+	var lastFormat = null;
+
+	/*** Display page action if allowed ***/
+	chrome.tabs.onUpdated.addListener(function(tabId, changeinfo, tab){
+		//validate url
+		var isValid = tab.url.match(/^https?:\/\/.*(?:\b=json\b)|(?:\b&json\b)|(?:\b\.json[\?\/]?\b).*$/);
+		if(isValid){
+			chrome.pageAction.show(tabId);
+		}
+	});
+
+	/*** Fire page action ***/
+	chrome.pageAction.onClicked.addListener(function(tab) {
+		createReport(tab.url, "url");
+	});
+
+	/*** Request listener ***/
+	chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+		switch(request.type) {
+			case "initUrlReport":
+				createReport(request.payload, "url");
+				break;
+			case "lastPayload":
+				sendResponse({payload: lastPayload, format: lastFormat});
+				break;
+			default: //snub
+				sendResponse({});
+		}
+	});
+
+	/*** Context Menu ***/
+	chrome.contextMenus.create({
+		title: "JsonReport",
+		contexts: ["link", "selection"],
+		onclick: function(info, tab) {
+			if(info.linkUrl) {
+				createReport(info.linkUrl, "url");
+			} else {
+				createReport(info.selectionText, "text");
+			}
+		}
+	});
+
+	/*** Create a new report ***/
+	createReport = function(payload, format) {
+		lastPayload = payload;
+		lastFormat = format;
+		//open a new report page
+		chrome.tabs.create({"url": chrome.extension.getURL("pages/report.html")});
+	};
+</script>

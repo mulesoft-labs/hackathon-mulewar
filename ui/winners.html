@@ -1,0 +1,103 @@
+<html>
+<head>
+<head>
+    <title>MuleWar!!</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="css/hackathon.css"/>
+    <script type="text/JavaScript" src="libs/jquery-1.9.1.min.js"></script>
+    <script type="text/JavaScript" src="libs/hackathon.js"></script>
+    <script type="text/JavaScript" src="libs/JsonReport-0.1/lib/js/jsonreport.js"></script>
+
+
+</head>
+
+<body>
+    <div style="background: url(./top.jpg);">
+   <div id="header" align="center"  >
+     <div style="float:left; width:23% " >
+        <a class="logo" > </a>
+    </div>
+  </div>
+</div>
+<div class="hero-unit">
+    <div style="text-align: center;">
+        <h2>War of Mules!!</h2>
+
+        <h1 id="winnerTeam">Winner...  </h1>
+
+    </div>
+
+    <div style="text-align: left; padding-left: 50px">
+
+        <h3>General Stats </h3>
+
+        <div id="stats" style="padding-left: 50px"></div>
+        <h3>Red Team Stats </h3>
+
+        <div id="redStats" style="padding-left: 50px"></div>
+        <h3>Blue team Stats </h3>
+
+        <div id="blueStats" style="padding-left: 50px"></div>
+        <h3>Player Stats </h3>
+
+        <div id="playerStats" style="padding-left: 50px"></div>
+    </div>
+
+</div>
+</body>
+</html>
+
+<script language="JavaScript">
+    var player = urlParam("player");
+    var winningTeam = urlParam("winner");
+    var redTeamStats;
+    var blueTeamStats;
+    var matchStats;
+    var playerStats;
+
+    document.getElementById("winnerTeam").innerHTML = document.getElementById("winnerTeam").innerHTML +"<b><i>"+ winningTeam+"</i></b>!!!";
+
+    matchStats =
+            jQuery.ajax({
+                url: "http://mulewar.corp.mulesoft.com/mulewar/stats/team/all",
+                async: false,
+                dataType: 'json'
+            }).responseText;
+
+    var matchStatsHtml = _.jsonreport(matchStats);
+    document.getElementById("stats").innerHTML = matchStatsHtml;
+
+    blueTeamStats =
+            jQuery.ajax({
+                url: "http://mulewar.corp.mulesoft.com/mulewar/stats/team/blue",
+                async: false,
+                dataType: 'json'
+            }).responseText;
+
+    var blueTeamStatsHtml = _.jsonreport(blueTeamStats);
+    document.getElementById("blueStats").innerHTML = blueTeamStatsHtml;
+
+    redTeamStats =
+            jQuery.ajax({
+                url: "http://mulewar.corp.mulesoft.com/mulewar/stats/team/blue",
+                async: false,
+                dataType: 'json'
+            }).responseText;
+
+    var redTeamStatsHtml = _.jsonreport(redTeamStats);
+    document.getElementById("redStats").innerHTML = redTeamStatsHtml;
+
+
+    playerStats =
+            jQuery.ajax({
+                url: "http://mulewar.corp.mulesoft.com/mulewar/stats/team/all",
+                async: false,
+                dataType: 'json'
+            }).responseText;
+
+    var playerStatsHtml = _.jsonreport(playerStats);
+    document.getElementById("playerStats").innerHTML = playerStatsHtml;
+
+
+</script>

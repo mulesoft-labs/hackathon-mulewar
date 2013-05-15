@@ -1,0 +1,54 @@
+﻿html{
+	font-size: 10px;
+}
+
+nav > ul > li:last-child{
+	float:right !important;
+}
+
+#reportProgress{
+	display: none;
+	height: 2em;
+}
+
+button{
+	margin-top:0;
+	margin-bottom:0;
+}
+
+#btnReqChange{
+	margin-left: -.18em;
+
+}
+#urlReq{
+	width:50em;
+	height:2em;
+	background-color: transparent;
+	border:none;
+}
+
+section{
+	overflow:auto;
+}
+
+#textReq{
+	width:99%;
+	height:40em;
+	border:none;
+}
+
+#changeMenu{
+	position:absolute;
+	width:9em;
+	border-radius:0 0;
+}
+
+#changeMenu li{
+	float:none;
+	cursor: pointer;
+}
+
+#btnReqChange .ui-button-icon-primary{
+	left:50%;
+}
+

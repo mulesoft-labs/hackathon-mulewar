@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>MuleWar!!</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="css/hackathon.css"/>
+<script type="text/JavaScript" src="libs/jquery-1.9.1.min.js"></script>
+<script type="text/JavaScript" src="libs/hackathon.js"></script>
+
+</head>
+
+<body>
+    <div style="background: url(./top.jpg);">
+   <div id="header" align="center"  >
+     <div style="float:left; width:23% " >
+        <a class="logo" > </a>
+    </div>
+  </div>
+</div>
+<div id="main">
+
+    <div id="user" class="jumbotron">
+        <h1>Please Wait</h1>
+
+        <p class="lead">...until everybody joins a team...</p>
+        <a class="btn btn-large btn-primary" href="#">Jedi's Team!</a>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var interval = setInterval(callStartGame, 250);
+    var team = getTeam();
+    var player = urlParam('nickname');
+
+
+    function callbackGameStatus(data) {
+        if (data.started == true) {
+            clearInterval(interval);
+            window.location = "juego.html"+"?nickname=" + player + "&team=" + team;
+        }
+    }
+
+
+    function callStartGame() {
+        $.ajax({ type: 'GET', url: gameStartUrl, dataType: "json", crossDomain: true, cache: false,
+            success: function (data) {
+                callbackGameStatus(data);
+            },
+            error: function (xhr, testStatus, error) {
+                alert(error);
+            }   });
+    }
+
+
+</script>
+
+</body>
+
+
+</html>
