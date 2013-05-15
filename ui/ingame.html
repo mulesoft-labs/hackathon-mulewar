@@ -23,7 +23,18 @@
         <h1>Please Wait</h1>
 
         <p class="lead">...until everybody joins a team...</p>
-        <a class="btn btn-large btn-primary" href="#">Jedi's Team!</a>
+        <div id="bears-button" class="btn btn-large btn-primary disabled" style="display: none">You are on Bear's Team!</div>
+        <div id="bulls-button" class="btn btn-large btn-danger disabled" style="display: none">You are on Bull's Team!</div>
+        <script>
+            var team = getTeam();
+            if ( team == "blue") {
+                document.getElementById("bears-button").style.display = '';
+            }
+            else {
+                document.getElementById("bulls-button").style.display = '';
+            }
+        </script>
+
 
     </div>
 </div>
@@ -49,7 +60,7 @@
                 callbackGameStatus(data);
             },
             error: function (xhr, testStatus, error) {
-                alert(error);
+                console.log(error);
             }   });
     }
 
